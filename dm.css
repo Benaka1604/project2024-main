@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .parking {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .slot {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  .slot.available {
+    background-color: green;
+  }
+
+  .slot.booked {
+    background-color: red;
+  }
