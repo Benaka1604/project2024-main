@@ -17,7 +17,7 @@
         $up1=mysqli_query($conn,$regi);
         $regi2="INSERT INTO `login`(`email`, `pass`, `temp`) VALUES ('$email','$pass',2);";
         $up2=mysqli_query($conn,$regi2);
-        header('Location:home.php');
+        header('Location:c_reg.php');
     }
 ?>
 
@@ -139,11 +139,15 @@ nav a {
         
     </header>
     <nav>
-            <a href="TimeDif.php" target="_blank">Calulator</a>
-            <a href="TimeDif.php" target="_blank">Calulator</a>
-            <a href="TimeDif.php" target="_blank">Calulator</a>
-            <a href="TimeDif.php" target="_blank">Calulator</a>
-        </nav>
+    <a href="/project2024-main/Admin.php">Home</a>
+    <a href="/project2024-main/Table.php">History</a>
+        <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
+        <a href="/project2024-main/User.php">Users</a>
+        <a href="/project2024-main/c_reg.php">Client Register</a>
+        <!-- <a href="/project2024-main/Entry.php" target="_blank">Vehicle Entry</a>
+        <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a> -->
+        <a href="/project2024-main/Logout.php">Logout</a>
+    </nav>
 
 
     <div class="dashboard1">
@@ -152,15 +156,15 @@ nav a {
             <p class="p-require">
             </p><br>
 
-            <input type="text" name="name" class="t_in" maxlength="20" placeholder="Enter your name"><br>
+            <input type="text" name="name" class="t_in" maxlength="20" placeholder="Enter client name"><br>
             <p class="p-require">
             </p>
 
             
-            <input type="email" name="email" class="t_in" placeholder="Enter the email"><br>
+            <input type="email" name="email" class="t_in" placeholder="Enter client email id"><br>
             <p class="p-require">
             </p>
-            <input type="password" name="password" class="t_in" placeholder="Enter the password">
+            <input type="password" name="password" class="t_in" placeholder="Enter client password">
             <p class="p-require">
             </p>
 

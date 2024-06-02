@@ -29,7 +29,7 @@
                 $cha2="UPDATE `details` SET `Payment`=0 WHERE `VNo`='$v_no';";
                 $cha3=mysqli_query($conn,$cha2);
                 if($cha3&&$cha1)
-                    header('Location: Entry.php');
+                    header('Location: Entry-c.php');
             }
         }
         

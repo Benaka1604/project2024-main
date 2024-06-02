@@ -2,7 +2,7 @@
 // session_start();
 include "DataBase.php";
 include "common.php";
-$sql = "SELECT `Email`,`VNo` FROM `details` WHERE`Payment`=0 order by 'VNo';";
+$sql = "SELECT `Email`,`VNo` FROM `details` WHERE `Payment`=0 and `p_id`=$p_id order by 'VNo';";
 $result = mysqli_query($conn, $sql);
 // if ($_SESSION['admin_id'] != 1) {
 //     header('Location: home.php');
@@ -64,23 +64,12 @@ $_SESSION['V_no']='A';
         
     </header>
     <nav>
-    <a href="/project2024-main/Admin.php">Home</a>
-   <?php
-    if($p_id==0){?>
-    <a href="/project2024-main/Table.php">History</a>
-    <a href="/project2024-main/User.php">Users</a>
-    <a href="/project2024-main/Entry.php" target="_blank">Vehicle Entry</a>
-        <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a>
-    <?php
-}
-else{?>
-    <a href="/project2024-main/Table1.php">History</a>
-<?php
-}?>
+        <a href="/project2024-main/Admin.php">Home</a>
+        <a href="/project2024-main/Table1.php">History</a>
         <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
         <!-- <a href="/project2024-main/User.php">Users</a> -->
-        <!-- <a href="/project2024-main/Entry.php" target="_blank">Vehicle Entry</a>
-        <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a> -->
+        <a href="/project2024-main/Entry-c.php" target="_blank">Vehicle Entry</a>
+        <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a>
         <a href="/project2024-main/Logout.php">Logout</a>
     </nav>
 

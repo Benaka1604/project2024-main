@@ -165,7 +165,7 @@ if (isset($_POST['login'])) {
         
         <nav>
         <a href="TimeDif.php" target="_blank">Calulator</a>
-        <a href="c_reg.php">Client Register</a>
+        <a href="TimeDif.php" target="_blank">Slots Availability</a>
     </nav>
         
     </header>

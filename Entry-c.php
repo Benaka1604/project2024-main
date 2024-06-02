@@ -82,7 +82,7 @@ else{?>
 }?>
         <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
         <!-- <a href="/project2024-main/User.php">Users</a> -->
-        <a href="/project2024-main/Entry.php" target="_blank">Vehicle Entry</a>
+        <a href="/project2024-main/Entry-c.php" target="_blank">Vehicle Entry</a>
         <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a>
         <a href="/project2024-main/Logout.php">Logout</a>
     </nav>

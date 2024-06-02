@@ -53,6 +53,7 @@ $result = mysqli_query($conn, $sql);
     <nav>
         <a href="/project2024-main/Admin.php">Home</a>
         <a href="/project2024-main/Table.php">History</a>
+        <a href="/project2024-main/c_reg.php">Client Register</a>
         <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
         <a href="/project2024-main/User.php">Users</a>
         <!-- <a href="/project2024-main/Entry.php" target="_blank">Vehicle Entry</a>

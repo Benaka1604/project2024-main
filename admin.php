@@ -85,11 +85,12 @@ $sum3=$row2['income'];
 if($p_id==0){?>
     <a href="/project2024-main/Table.php">History</a>
     <a href="/project2024-main/User.php">Users</a>
+    <a href="/project2024-main/c_reg.php">Client Register</a>
     <?php
 }
 else{?>
     <a href="/project2024-main/Table1.php">History</a>
-    <a href="/project2024-main/Entry.php" target="_blank">Vehicle Entry</a>
+    <a href="/project2024-main/Entry-c.php" target="_blank">Vehicle Entry</a>
         <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a>
 <?php
 }?>
