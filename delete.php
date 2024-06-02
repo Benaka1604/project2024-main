@@ -12,13 +12,27 @@ if ($_SESSION['admin_id'] != 1) {
 // To delete data from table
 if (isset($_GET['deleteVNo'])) {
     $id = $_GET['deleteVNo'];
-    $delete = "delete from `basic` where VNo = '$id'";
+    $delete = "delete from `login` where email = '$id'";
+    $del="UPDATE `details` SET `T_hrs`=1 WHERE Email = '$id' ;";
+    $res=mysqli_query($conn,$del);
     $result = mysqli_query($conn,$delete);
     if ($result) {
-        header("Location: admin.php");
+        header("Location: User.php");
     } else {
         echo " Something went wrong!!";
     }
 }
-
+// To delete data from table
+if (isset($_GET['delemail'])) {
+    $id = $_GET['delemail'];
+    $delete = "delete from `login` WHERE email = '$id';";
+    $del="UPDATE `clients` SET `Temp`=1 WHERE email = '$id' ;";
+    $res=mysqli_query($conn,$del);
+    $result = mysqli_query($conn,$delete);
+    if ($result) {
+        header("Location: c_data.php");
+    } else {
+        echo " Something went wrong!!";
+    }
+}
 ?>

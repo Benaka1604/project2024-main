@@ -13,6 +13,11 @@ if(isset($_POST['sub1'])){
     $try=3;
     // echo $try;
 }
+if(isset($_POST['sub2'])){
+    $cid=$_POST['cid'];
+    $try=6;
+    // echo $try;
+}
 
 $sql = "SELECT * FROM `details` ORDER BY `InTime` ASC;";
 $result = mysqli_query($conn, $sql);
@@ -47,15 +52,17 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
     <header>
-        <h1>VEHICLE PARKING ADMIN PAGE</h1>
+        <h1>Parking History</h1>
         
     </header>
     <nav>
         <a href="/project2024-main/Admin.php">Home</a>
         <a href="/project2024-main/Table.php">History</a>
-        <a href="/project2024-main/c_reg.php">Client Register</a>
+        
         <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
         <a href="/project2024-main/User.php">Users</a>
+        <a href="/project2024-main/c_data.php">Clients</a>
+        <a href="/project2024-main/c_reg.php">Client Register</a>
         <!-- <a href="/project2024-main/Entry.php" target="_blank">Vehicle Entry</a>
         <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a> -->
         <a href="/project2024-main/Logout.php">Logout</a>
@@ -75,6 +82,7 @@ $result = mysqli_query($conn, $sql);
                 <option value="1" >Vehicle No</option>
                 <option value="2" >Parked Vehicle</option>
                 <option value="0" >Full History</option>
+                <option value="4" >Client Id</option>
             </Select>&nbsp&nbsp&nbsp&nbsp
             <!-- <input type="button" value="Submit"> -->
             <input type="submit" value="Submit" name="Submit">
@@ -88,6 +96,13 @@ $result = mysqli_query($conn, $sql);
                 <input type="submit" value="Submit" name="sub1">
             </form>
 <?php        }
+elseif($try==4){?>
+    <form action="Table.php" method="post">
+        <input type="text" name="cid" id="" placeholder="Enter Client Id." autofocus>
+        <input type="submit" value="Submit" name="sub2">
+    </form>
+   <?php 
+}
      ?>   </div>
     <div class="tb">
        <table border 1px white class="tbl">
@@ -100,7 +115,9 @@ $result = mysqli_query($conn, $sql);
             <th class="hd">Total Parking Time</th>
             <th class="hd">Total Price</th>
             <th class="hd">Payment Status</th>
-
+            <th class="hd">Client Id</th>
+            <th class="hd">City</th>
+            <th class="hd">Place</th>
         <?php
             if($try==5){
             $sql = "SELECT * FROM `details` WHERE Payment=0 ORDER BY `InTime` ASC;";
@@ -120,6 +137,11 @@ $result = mysqli_query($conn, $sql);
             elseif($try==3){
                 // echo 'efs';
                 $sql = "SELECT * FROM `details` WHERE v_no='$tr' ORDER BY `InTime` ASC;";
+                $result = mysqli_query($conn, $sql);
+            }
+            elseif($try==6){
+                // echo 'efs';
+                $sql = "SELECT * FROM `details` WHERE p_id='$cid' ORDER BY `InTime` ASC;";
                 $result = mysqli_query($conn, $sql);
             }
             //     $sql = "SELECT `VNo` FROM `basic` order by 'VNo';";
@@ -180,6 +202,10 @@ $result = mysqli_query($conn, $sql);
                 else{
                     $status='Payment Successful';
                 }
+                $pid=$row['p_id'];
+                $cli="SELECT `c_name`,`c_city`,`c_place` FROM `clients` WHERE `p_id`=$pid;";
+                $cli1=mysqli_query($conn,$cli);
+                $cli2=mysqli_fetch_assoc($cli1);
 
                 echo ' <tr> 
                 <td class="td">' . $i . '</td>
@@ -191,6 +217,9 @@ $result = mysqli_query($conn, $sql);
                 <td class="td">' .$diff->d." Days " .$diff->h." Hours " . $diff->i." Min" . '</td>
                 <td class="td" center>' . $price . '</td>
                 <td class="td">' . $status . '</td>
+                <td class="td">' . $pid . '</td>
+                <td class="td">' . $cli2['c_city'] . '</td>
+                <td class="td">' . $cli2['c_place'] . '</td>
                 <td class="td">
                 
                 
@@ -201,7 +230,8 @@ $result = mysqli_query($conn, $sql);
                  ;
                  $i++;
             }
-            echo $p_id; ?>
+            // echo $p_id; 
+            ?>
         </table>
 
         </div>

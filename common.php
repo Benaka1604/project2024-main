@@ -23,5 +23,4 @@
         $p_k=$pid2['p_id'];
         $_SESSION['p']=$p_k;
     }
-    // echo $p_id;
 ?>

@@ -143,6 +143,7 @@ nav a {
     <a href="/project2024-main/Table.php">History</a>
         <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
         <a href="/project2024-main/User.php">Users</a>
+        <a href="/project2024-main/c_data.php">Clients</a>
         <a href="/project2024-main/c_reg.php">Client Register</a>
         <!-- <a href="/project2024-main/Entry.php" target="_blank">Vehicle Entry</a>
         <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a> -->
@@ -161,10 +162,10 @@ nav a {
             </p>
 
             
-            <input type="email" name="email" class="t_in" placeholder="Enter client email id"><br>
+            <input type="email" name="email" class="t_in" placeholder="Enter client email id" autocomplete="off"><br>
             <p class="p-require">
             </p>
-            <input type="password" name="password" class="t_in" placeholder="Enter client password">
+            <input type="password" name="password" class="t_in" placeholder="Enter client password" autocomplete="off">
             <p class="p-require">
             </p>
 

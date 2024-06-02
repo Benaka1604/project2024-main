@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "DataBase.php";
-$sql = "SELECT * FROM `basic` WHERE T_hrs=0;";
+$sql = "SELECT * FROM `clients` WHERE Temp=0;";
 $result = mysqli_query($conn, $sql);
 
 if ($_SESSION['admin_id'] != 1) {
@@ -14,11 +14,15 @@ if ($_SESSION['admin_id'] != 1) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>Clients Data</title>
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="User.css">
     <link rel="icon" href="prjlogo.jpeg">
-
+    <style>
+        .u-table{
+            margin-top:20px;
+        }
+    </style>
 
 </head>
 <body>
@@ -26,7 +30,7 @@ if ($_SESSION['admin_id'] != 1) {
         <!-- <div class="heddiv"> -->
             <!-- <img src="/bag.jpg" alt="sry" class="img1"> -->
         <!-- </div> -->
-        <h1>VEHICLE PARKING ADMIN PAGE</h1>
+        <h1>Clients Details</h1>
         
     </header>
     <nav>
@@ -46,14 +50,16 @@ if ($_SESSION['admin_id'] != 1) {
     
     
     <div class="u-table">    
-       <h1>Admin Page</h1>
+       <!-- <h1>Admin Page</h1> -->
        <table border 1px white class="tbl">
             <th class="hd">Sl No</th>
             <th class="hd">Name</th>
-            <th class="hd">Vehicle Number</th>
-            <th class="hd">Vehicle Type</th>
-            <!-- <th class="hd">Phone Number</th> -->
             <th class="hd">E-mail</th>
+            <th class="hd">Client Id</th>
+            <th class="hd">City</th>
+            <th class="hd">Place</th>
+            <!-- <th class="hd">Phone Number</th> -->
+            
             <!-- <th class="hd">User-Id</th> -->
             <th class="hd">Action</th>
 
@@ -63,14 +69,15 @@ if ($_SESSION['admin_id'] != 1) {
 
                 echo ' <tr> 
                 <td class="td">' . $i . '</td>
-                <td class="td">' . $row['Name'] . '</td>
-                <td class="td">' . $row['VNo'] . '</td>
-                <td class="td">' . $row['VType'] . '</td>
-                
+                <td class="td">' . $row['c_name'] . '</td>
                 <td class="td">' . $row['Email'] . '</td>
+                <td class="td">' . $row['p_id'] . '</td>
+                
+                <td class="td">' . $row['c_city'] . '</td>
+                <td class="td">' . $row['c_place'] . '</td>
                 <td class="td">
                 
-                <button class="btn-delete"><a href="delete.php?deleteVNo=' . $row['Email'] . '">Delete</a></button> 
+                <button class="btn-delete"><a href="delete.php?delemail=' . $row['Email'] . '">Delete</a></button> 
                 </td>
                 </tr>
                 

@@ -165,8 +165,8 @@ if (isset($_POST['login'])) {
         <h1>VEHICLE PARKING</h1>
         
         <nav>
-        <a href="TimeDif.php" target="_blank">Calulator</a>
-        <a href="TimeDif.php" target="_blank">Slots Availability</a>
+        <a href="TimeDif.php">Calulator</a>
+        <a href="Availability.php">Slots Availability</a>
     </nav>
         
     </header>

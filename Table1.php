@@ -53,7 +53,7 @@ $result = mysqli_query($conn, $sql);
     </header>
     <nav>
         <a href="/project2024-main/Admin.php">Home</a>
-        <a href="/project2024-main/Table.php">History</a>
+        <a href="/project2024-main/Table1.php">History</a>
         <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
         <!-- <a href="/project2024-main/User.php">Users</a> -->
         <a href="/project2024-main/Entry-c.php" target="_blank">Vehicle Entry</a>
@@ -204,7 +204,8 @@ $result = mysqli_query($conn, $sql);
                  ;
                  $i++;
             }
-            echo $p_id; ?>
+            // echo $p_id; 
+            ?>
         </table>
 
         </div>

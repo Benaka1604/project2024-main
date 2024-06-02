@@ -21,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WELCOME TO VEHICLE PARKING</title>
+    <title> Parking Price calculator</title>
     <link rel="stylesheet" href="home.css">
     <link rel="icon" href="prjlogo.jpeg">
     <style>
@@ -52,6 +52,24 @@
         .tb1{
             margin-left:200px;
         }
+        nav {
+        color : #f4f4f4;
+        display: flex;
+        background-color: #333;
+        padding: 10px;
+    }
+    nav a {
+        background-color:#f4f4f4;
+        text-decoration: none;
+        margin-left: 15px;
+        color: #333;
+        padding: 10px 20px;
+        /* position: fixed; */
+    }
+    nav a:hover {
+        background-color: #ddd;
+        transition: background-color 0.6s ease-in-out; 
+    }
 
     </style>
 </head>
@@ -61,7 +79,10 @@
             <!-- <img src="/bag.jpg" alt="sry" class="img1"> -->
         <!-- </div> -->
         <h1>VEHICLE PARKING</h1>
+        <nav>
         <a href="home.php">Sign in/Register</a>
+        <a href="Availability.php">Slots Availability</a>
+        </nav>
         
     </header>
     <div class="cal">
@@ -106,32 +127,7 @@
    }
    ?>
     </div></div>
-    <div class="cal">
-        <div class="tb1">
-            <table border 2px solid>
-                <tr>
-                    <th>Vehicle Type</th>
-                    <th>Total Slots</th>
-                    <th>Parked Slots</th>
-                    <th>Available Slots</th>
-                </tr>
-                <tr>
-                    <th>Bike</th>
-                    <td><?php echo $t_bike;  ?></td>
-                    <td><?php echo $b['T'];  ?></td>
-                    <td><?php echo ($t_bike-$b['T']);  ?></td>
-                </tr>
-                <tr>
-                    <th>Car</th>
-                    <td><?php echo $t_car;  ?></td>
-                    <td><?php echo $c['T'];  ?></td>
-                    <td><?php echo ($t_car-$c['T']);  ?></td>
-                </tr>
-            </table>
-
-
-        </div>
-    </div>
+    
 
        
 <footer>

@@ -22,14 +22,14 @@ if($person==2){
     $pid1=mysqli_query($conn,$pid);
     $pid2=mysqli_fetch_assoc($pid1);
     $p_id=$pid2['p_id'];
-    // echo $p_id;
+    echo $p_id;
     $incount="SELECT COUNT(Email) as Incount FROM `details` WHERE `InTime`>'$date1' AND `InTime`<'$date2' AND `p_id`=$p_id;";
     $outcount="SELECT COUNT(Email) as Outcount FROM `details` WHERE `OutTime`>'$date1' AND `OutTime`<'$date2' AND`Payment`=1 AND `p_id`=$p_id;";
     $sum="SELECT SUM(Price) as income FROM `details` WHERE `OutTime`>'$date1' AND `OutTime`<'$date2' AND `Payment`=1 AND `p_id`=$p_id;";
     $vec="SELECT COUNT(Email) as Vech FROM `details` WHERE `Payment`=0 AND `p_id`=$p_id;";
 }
 elseif($person==3){
-    // echo $p_id;
+    echo $p_id;
     $incount="SELECT COUNT(Email) as Incount FROM `details` WHERE `InTime`>'$date1' AND `InTime`<'$date2' ;";
     $outcount="SELECT COUNT(Email) as Outcount FROM `details` WHERE `OutTime`>'$date1' AND `OutTime`<'$date2' AND`Payment`=1;";
     $sum="SELECT SUM(Price) as income FROM `details` WHERE `OutTime`>'$date1' AND `OutTime`<'$date2' AND `Payment`=1;";
@@ -80,12 +80,11 @@ $sum3=$row2['income'];
         
     </header>
     <nav>
-        <a href="/project2024-main/Admin.php">Home</a>
+    <a href="/project2024-main/client.php">Home</a>
 <?php
 if($p_id==0){?>
     <a href="/project2024-main/Table.php">History</a>
     <a href="/project2024-main/User.php">Users</a>
-    <a href="/project2024-main/c_data.php">Clients</a>
     <a href="/project2024-main/c_reg.php">Client Register</a>
     <?php
 }
