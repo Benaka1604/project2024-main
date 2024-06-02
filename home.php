@@ -5,6 +5,7 @@
 
 <?php
 
+
 // Starting the session
 // session_start();
 include 'common.php';
