@@ -54,7 +54,12 @@ if (isset($_POST['register'])) {
         $run = "insert into `basic` (`Name`, `VNo`, `VType`, `Email`, `Password`) values  ('$name', '$VNo', '$VType',  '$email', '$password')";
         
         if ($insert = mysqli_query($conn, $run)) {
-            $regi2="INSERT INTO `login`(`email`, `pass`, `temp`) VALUES ('$email','$password',1);";
+            if($VType=="Bike"){
+                $regi2="INSERT INTO `login`(`email`, `pass`, `temp`) VALUES ('$email','$password',1);";
+            }
+            elseif($VType=="Car"){
+                $regi2="INSERT INTO `login`(`email`, `pass`, `temp`) VALUES ('$email','$password',3);";
+            }
             $up2=mysqli_query($conn,$regi2);
             // header("Location: login.php");
             
@@ -110,6 +115,15 @@ if (isset($_POST['login'])) {
             // header("Location: Dash.php?email=$userid");
         
     }
+    elseif ($t1 == 3) {
+        // echo $email;
+        $_SESSION['email'] = $userid;
+        $_SESSION['person']=3;
+        // echo $_SESSION['email'];
+        header("Location: Dash.php");
+        // header("Location: Dash.php?email=$userid");
+    
+}
     elseif($t1==2){
         $_SESSION['email'] = $userid;
         $_SESSION['person']=2;

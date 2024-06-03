@@ -175,6 +175,7 @@ elseif($try==4){?>
             while ($row = mysqli_fetch_assoc($result)) {
                 $price=0;
                 $inti=$row['InTime'];
+                $Vn=strtoupper($row['v_no']);
                 $Vno=$row['VNo'];
                 $c_time=date('Y-m-d G:i:s');
                 $outti=$row['OutTime'];
@@ -210,7 +211,7 @@ elseif($try==4){?>
                 echo ' <tr> 
                 <td class="td">' . $i . '</td>
                 <td class="td">' . $row['Email'] . '</td>
-                <td class="td">' . $row['v_no'] . '</td>
+                <td class="td">' . $Vn . '</td>
                 <td class="td">' . $row['VType'] . '</td>
                 <td class="td">' . $row['InTime'] . '</td>
                 <td class="td">' . $row['OutTime'] . '</td>

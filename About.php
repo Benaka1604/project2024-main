@@ -1,21 +1,31 @@
+<?php
+    include('DataBase.php');
+    include('common.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>About</title>
     <link rel="stylesheet" href="home.css">
     <link rel="icon" href="prjlogo.jpeg">
     <style>
-        .widget1{
-    width: 300px;
-    height: 80px;   
+           .widget1{
+    width: 800px;
+    height: 400px;   
     padding: 20px;
     border-radius: 5%;
     padding-left: 12px;
-    background-color: aqua;
+    /* background-color: aqua; */
     /* overflow: hidden; */
-    text-align: center;
+    /* text-align: center; */
+            /* CSS from dashboard */
+    /* display: flex;
+    justify-content: space-around;
+    margin-left: -4%;
+    align-items: center; */
     
 }
 
@@ -25,8 +35,8 @@
 .widget1:hover{
     
     background-color: #ddd;
-    width: 280px;
-    height: 60px;   
+    width: 800px;
+    height: 400px;   
     padding: 20px;
     border-radius: 5%;
     /* background-image: url(); */
@@ -36,7 +46,7 @@
 .dashboard1 {
     display: flex;
     justify-content: space-around;
-    /* margin-left: -4%; */
+    margin-left: -4%;
     align-items: center;
     margin-top: 50px;
     /* background-color: aqua; */
@@ -51,30 +61,42 @@
         <h1>VEHICLE PARKING</h1>
         
     </header>
-
+    
     <nav>
         <a href="/project2024-main/Dash.php">Dashboard</a>
-        <a href="/project2024-main/Reservation.php">Reservation</a>
+        <?php if($person==3){?>
+            <a href="/project2024-main/Reservation.php">Reservation</a>
+            <?php }?>
         <a href="/project2024-main/History.php" >History</a>
-        <a href="/project2024-main/About.html">About</a>
-        <a href="/project2024-main/contact.html" >Contact</a>
+        <a href="/project2024-main/About.php">About</a>
+        <a href="/project2024-main/contact.php" >Contact</a>
         <a href="/project2024-main/Logout.php">Logout</a>
     </nav>
+
     <div class="dashboard1">
-        <div class="widget2">
+        <div class="widget1">
             
-        <h2  class="hd" >Contact</h2>
-        <!-- <h1></h1> -->
-        <h3>Phone No : </h3> <p>+1234567890</p>
-        <h3>Email: </h3> <p>parkurvehicle@gmail.com</p>
-        <h3>Address : </h3> <p>573201 Udaygiri, Hassan, India</p>
+        <!-- <h2  class="hd" >Contact</h2> -->
+        <main>
+            <section>
+                <h2>Our Story</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla, adipisci.</p>
+            </section>
+        
+            <section>
+                <h2>Our Mission</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, nobis.</p>
+            </section>
+        </main>
+        
+        
+        
+           <h1>About</h1>
+           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit quo optio aliquam perspiciatis adipisci ullam beatae saepe, eveniet necessitatibus qui iusto ex quae vel vero maiores officia, ea enim explicabo soluta corporis quisquam? Nemo sint sequi, rerum voluptatum quas dicta assumenda doloremque, consequatur ratione ullam eligendi doloribus hic vitae illum.</p>
         </div>
     </div>
+
     
-   
-    
-    
-       
 <footer>
     <div class="social-icons">
         

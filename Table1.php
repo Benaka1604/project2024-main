@@ -183,11 +183,11 @@ $result = mysqli_query($conn, $sql);
                 else{
                     $status='Payment Successful';
                 }
-
+                $Vn=strtoupper($row['v_no']);
                 echo ' <tr> 
                 <td class="td">' . $i . '</td>
                 <td class="td">' . $row['Email'] . '</td>
-                <td class="td">' . $row['v_no'] . '</td>
+                <td class="td">' . $Vn . '</td>
                 <td class="td">' . $row['VType'] . '</td>
                 <td class="td">' . $row['InTime'] . '</td>
                 <td class="td">' . $row['OutTime'] . '</td>

@@ -25,10 +25,12 @@ include 'Common.php';
     </header>
     <nav>
         <a href="/project2024-main/Dash.php">Dashboard</a>
-        <a href="/project2024-main/Reservation.php">Reservation</a>
+        <?php if($person==3){?>
+            <a href="/project2024-main/Reservation.php">Reservation</a>
+            <?php }?>
         <a href="/project2024-main/History.php" >History</a>
-        <a href="/project2024-main/About.html">About</a>
-        <a href="/project2024-main/contact.html" >Contact</a>
+        <a href="/project2024-main/About.php">About</a>
+        <a href="/project2024-main/contact.php" >Contact</a>
         <a href="/project2024-main/Logout.php">Logout</a>
     </nav>
     

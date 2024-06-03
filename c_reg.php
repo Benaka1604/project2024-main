@@ -178,17 +178,17 @@ nav a {
             </p>
 
             <!-- <input type="text" name="VNo" class="t_in" maxlength="10" placeholder="Vehicle Number"> -->
-            <input type="number" name="c_count" class="num" id="" placeholder="No of cars">
+            <input type="number" name="c_count" class="num" id="" placeholder="No of cars" value="NULL">
             <!-- <p class="p-require">
             </p> -->
 
-            <input type="number" name="c_cost" id="" class="num" step="5" placeholder="Cost for 12 Hours">
-            <p class="p-require">
+            <input type="number" name="c_cost" id="" class="num" step="5" placeholder="Cost for 12 Hours" value="0">
+            <!-- <p class="p-require"> -->
             </p>
 
-            <input type="number" name="b_count" id="" class="num" placeholder="No of Bikes">
-            <input type="number" name="b_cost" id="" class="num" step="5" placeholder="Cost for 12 Hours">
-            <p class="p-require">
+            <input type="number" name="b_count" id="" class="num" placeholder="No of Bikes"  value="NULL">
+            <input type="number" name="b_cost" id="" class="num" step="5" placeholder="Cost for 12 Hours" value=0>
+            <!-- <p class="p-require"> -->
             </p>
 
 

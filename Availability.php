@@ -7,7 +7,7 @@
     include('DataBase.php');
     // $c=$t_car;
     // $b=$t_bike;
-    $tot="SELECT `p_id`,`c_city`,`c_place`,`c_slots`,`b_slots` FROM `clients`;";
+    $tot="SELECT `p_id`,`c_city`,`c_place`,`c_slots`,`b_slots` FROM `clients` WHERE Temp=0;";
     $t_r=mysqli_query($conn,$tot);
 
 
@@ -121,6 +121,12 @@
                             $bike=$r['b_slots'];
                             $c3=$car-$c2;
                             $b3=$bike-$b2;
+                            if($bike==0){
+                                $bike=$b2=$b3="-";
+                            }
+                            if($car==0){
+                                $car=$c2=$c3="&nbsp;&nbsp;&nbsp;"."-";
+                            }
                             echo <<< k
                             <tr>
                                 <td> $city </td>

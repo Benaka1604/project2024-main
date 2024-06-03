@@ -86,6 +86,7 @@ else{?>
         <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a>
         <a href="/project2024-main/Logout.php">Logout</a>
     </nav>
+    
 
     <?php
         $array=[];
@@ -96,7 +97,19 @@ else{?>
     ?>
        <div class="widgbag1">
     <div class="dashboardn">
+        
         <div class="widget11">
+        <?php
+        if(isset($_GET['abc'])){
+            $c=$_GET['abc'];
+            if($c==1){
+                echo "Vechicle Number is not registered.";
+            }
+            elseif($c==2){
+                echo "Vechicle is already in parking lot.";
+            }
+        }
+    ?>
     <form action="Entry1.php" method="post">
         <label for=""><h3>Select Vehicle Number to enter</h3></label><br>
     <input type="text" name="v_no" id="select" autofocus><br><br>
