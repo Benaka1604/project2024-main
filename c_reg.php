@@ -17,6 +17,14 @@
         $up1=mysqli_query($conn,$regi);
         $regi2="INSERT INTO `login`(`email`, `pass`, `temp`) VALUES ('$email','$pass',2);";
         $up2=mysqli_query($conn,$regi2);
+
+        $try2="ALTER TABLE `reserve` ADD `$email` VARCHAR(15) NOT NULL DEFAULT 'Available' AFTER `slot`;";
+        $try1="ALTER TABLE `reserve` ADD `$cid` VARCHAR(10) NULL DEFAULT NULL AFTER `slot`;";
+        $try3="UPDATE `reserve` SET `$email`='Unavailable' WHERE slot=0 or slot>$c_cou;";
+        $run1=mysqli_query($conn,$try1);
+        $run1=mysqli_query($conn,$try2);
+        $run1=mysqli_query($conn,$try3);
+
         header('Location:c_reg.php');
     }
 ?>

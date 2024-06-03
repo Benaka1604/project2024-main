@@ -16,8 +16,9 @@ $ch3=mysqli_fetch_assoc($ch2);
 if(mysqli_num_rows($ch2)==1){
 $ch4=$ch3['booked'];}
 
-$aa="SELECT * FROM `reserve`;";
+$aa="SELECT * FROM `reserve` WHERE `booked` !='Unavailable';";
 $ab=mysqli_query($conn,$aa);
+$r12=mysqli_num_rows($ab);
 $r1=mysqli_fetch_array($ab);
 $slot=[];
 $VNo=[];
@@ -150,8 +151,9 @@ body {
 
 <div class="parking-lot1">
 
-    <?php $i=0;
-    while($i<20){?>
+    <?php 
+    $i=0;
+    while($i<$r12-1){?>
         <div class="parking-space" id="<?php print($slot[$i]);?>">
         <form action="Reservation.php" method="post">
         <br>    

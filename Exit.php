@@ -87,7 +87,7 @@ $_SESSION['V_no']='A';
         
         $array=[];
         while ($row = mysqli_fetch_array($result)) {
-            $array[]=$row['VNo'];
+            $array[]=strtoupper($row['VNo']);
             
         }
     ?>

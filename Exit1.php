@@ -9,14 +9,17 @@ $result = mysqli_query($conn, $sql);
 // }
 
 if(isset($_POST['Submit'])){
-    $email=$_POST['ve_no'];
-    $ve_no="SELECT * FROM `details` WHERE `Email`='$email';";
+    $email1=$_POST['ve_no'];
+
+
+
+
     $v_no = mysqli_query($conn, $sql);
     $nrow = mysqli_fetch_assoc($v_no);
     $veno=$nrow['VNo'];
-    $cha="UPDATE `basic` SET `Payment`=NULL WHERE `Email`='$email';";
+    $cha="UPDATE `basic` SET `Payment`=NULL WHERE `Email`='$email1';";
     $cha1=mysqli_query($conn,$cha);
-    $cha2="UPDATE `details` SET `Payment`=1 ,`VNo`=NULL WHERE Email='$email';";
+    $cha2="UPDATE `details` SET `Payment`=1 ,`VNo`=NULL WHERE Email='$email1';";
     $cha3=mysqli_query($conn,$cha2);
     if($cha3){
         header('Location: Exit.php');
@@ -38,6 +41,13 @@ if(isset($_POST['otp_val'])){
         $v_no=$_SESSION['V_no'];
         $run2="UPDATE `details` SET `OutTime` = '$c_time' WHERE VNo = '$v_no'";
         $update1=mysqli_query($conn, $run2);  
+        $ve_no="SELECT 'VType' FROM `details` WHERE `VNo`='$v_no';";
+        $v_no1 = mysqli_query($conn, $ve_no);
+        $ow = mysqli_fetch_assoc($v_no1);
+        // if($ow=="Car"){
+            $add2="UPDATE `reserve` SET `V_No`=NULL,`$email`='Available' WHERE`$p_id`='$v_no';";
+            $r1=mysqli_query($conn,$add2);
+        
         header("Location:Exit.php?vno=$v_no");
     }
     else{
