@@ -60,7 +60,7 @@ $_SESSION['V_no']='A';
         <!-- <div class="heddiv"> -->
             <!-- <img src="/bag.jpg" alt="sry" class="img1"> -->
         <!-- </div> -->
-        <h1>VEHICLE PARKING ADMIN PAGE</h1>
+        <h1>VEHICLE PARKING PAGE</h1>
         
     </header>
     <nav>

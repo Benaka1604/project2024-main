@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $sql);
 </head>
 <body>
     <header>
-        <h1>VEHICLE PARKING ADMIN PAGE</h1>
+        <h1>VEHICLE PARKING PAGE</h1>
         
     </header>
     <nav>

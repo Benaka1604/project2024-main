@@ -80,12 +80,12 @@
         <main>
             <section>
                 <h2>Our Story</h2>
-                <p></p>
+                <p>Welcome to Vehicle Parking System</p>
             </section>
         
             <section>
                 <h2>Our Mission</h2>
-                <p></p>
+                <p>Your trusted partner in innovative vehicle parking solutions.At Vehicle Parking System, we understand the challenges of urban parking management, and we're committed to providing cutting-edge technology to alleviate these concerns.  we've established ourselves as pioneers in automated parking systems, offering efficient, secure, and user-friendly solutions tailored to meet the needs of our clients.Our team consists of passionate professionals dedicated to revolutionizing the way people park. From engineers to designers to customer service representatives, every member of our team is driven by a shared vision of making parking hassle-free and convenient.What sets us apart is our relentless pursuit of excellence. We continually research and develop new technologies to stay ahead of the curve, ensuring that our systems are always at the forefront of innovation. Whether it's enhancing user experience, improving security features, or optimizing space utilization, we're constantly pushing boundaries to deliver the best possible solutions to our clients.But beyond just providing state-of-the-art parking systems, we're committed to fostering lasting relationships with our customers. We believe in transparency, integrity, and reliability in everything we do.</p>
             </section>
         </main>
         

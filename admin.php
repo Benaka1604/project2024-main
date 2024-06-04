@@ -76,7 +76,7 @@ $sum3=$row2['income'];
         <!-- <div class="heddiv"> -->
             <!-- <img src="/bag.jpg" alt="sry" class="img1"> -->
         <!-- </div> -->
-        <h1>VEHICLE PARKING ADMIN HOME PAGE</h1>
+        <h1>VEHICLE PARKING HOME PAGE</h1>
         
     </header>
     <nav>
@@ -108,7 +108,7 @@ else{?>
     
     
     
-       <h1 style="text-align:center;">Admin Home Page</h1>
+       <h1 style="text-align:center;">Home Page</h1>
 
        <div class="widgbag">
     <div class="dashboard">
