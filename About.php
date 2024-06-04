@@ -65,7 +65,7 @@
     <nav>
         <a href="/project2024-main/Dash.php">Dashboard</a>
         <?php if($person==3){?>
-            <a href="/project2024-main/Reservation.php">Reservation</a>
+            <!-- <a href="/project2024-main/Reservation.php">Reservation</a> -->
             <?php }?>
         <a href="/project2024-main/History.php" >History</a>
         <a href="/project2024-main/About.php">About</a>
@@ -80,19 +80,19 @@
         <main>
             <section>
                 <h2>Our Story</h2>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla, adipisci.</p>
+                <p></p>
             </section>
         
             <section>
                 <h2>Our Mission</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, nobis.</p>
+                <p></p>
             </section>
         </main>
         
         
         
            <h1>About</h1>
-           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit quo optio aliquam perspiciatis adipisci ullam beatae saepe, eveniet necessitatibus qui iusto ex quae vel vero maiores officia, ea enim explicabo soluta corporis quisquam? Nemo sint sequi, rerum voluptatum quas dicta assumenda doloremque, consequatur ratione ullam eligendi doloribus hic vitae illum.</p>
+           <p></p>
         </div>
     </div>
 

@@ -8,12 +8,13 @@
         $city=$_POST['city'];
         $place=$_POST['place'];
         $c_cou=$_POST['c_count'];
-        $c_cos=$_POST['c_cost'];
+        // $c_cos=$_POST['c_cost'];
         $b_cou=$_POST['b_count'];
-        $b_cos=$_POST['b_cost'];
+        // $b_cos=$_POST['b_cost'];
         // $fed=date('Y-m-d ')
         $cid=rand(10000,99999);
         $regi="INSERT INTO `clients`(`p_id`, `c_name`, `Email`, `c_city`, `c_place`, `b_slots`, `c_slots`, `b_rate`, `c_rate`) VALUES ('$cid','$name','$email','$city','$place','$b_cou','$c_cou','$b_cos','$c_cos');";
+        $regi="INSERT INTO `clients`(`p_id`, `c_name`, `Email`, `c_city`, `c_place`, `b_slots`, `c_slots`) VALUES ('$cid','$name','$email','$city','$place','$b_cou','$c_cou');";
         $up1=mysqli_query($conn,$regi);
         $regi2="INSERT INTO `login`(`email`, `pass`, `temp`) VALUES ('$email','$pass',2);";
         $up2=mysqli_query($conn,$regi2);
@@ -190,12 +191,12 @@ nav a {
             <!-- <p class="p-require">
             </p> -->
 
-            <input type="number" name="c_cost" id="" class="num" step="5" placeholder="Cost for 12 Hours" value="0">
+            <!-- <input type="number" name="c_cost" id="" class="num" step="5" placeholder="Cost for 12 Hours" value="0"> -->
             <!-- <p class="p-require"> -->
             </p>
 
             <input type="number" name="b_count" id="" class="num" placeholder="No of Bikes"  value="NULL">
-            <input type="number" name="b_cost" id="" class="num" step="5" placeholder="Cost for 12 Hours" value=0>
+            <!-- <input type="number" name="b_cost" id="" class="num" step="5" placeholder="Cost for 12 Hours" value=0> -->
             <!-- <p class="p-require"> -->
             </p>
 

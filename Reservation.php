@@ -5,37 +5,66 @@
 include('DataBase.php');
 include('Common.php');
 $ch4='Unavailable';
+
+$res="SELECT `p_id`,`c_name`,`Email`,`c_city`,`c_place` FROM `clients` WHERE Temp = 0;";
+$res1=mysqli_query($conn,$res);
+
+$array=[];
+while ($row = mysqli_fetch_array($res1)) {
+    $array[]=strtoupper($row['c_place']);
+}
+
+
+
 $e="SELECT `VNo` FROM `basic` WHERE `Email`='$email';";
 $e1=mysqli_query($conn,$e);
 $vn=mysqli_fetch_assoc($e1);
 $vno=$vn['VNo'];
 
-$check1="SELECT `booked` FROM `reserve` WHERE `V_No`='$vno';";
-$ch2=mysqli_query($conn,$check1);
-$ch3=mysqli_fetch_assoc($ch2);
-if(mysqli_num_rows($ch2)==1){
-$ch4=$ch3['booked'];}
 
-$aa="SELECT * FROM `reserve` WHERE `booked` !='Unavailable';";
-$ab=mysqli_query($conn,$aa);
-$r12=mysqli_num_rows($ab);
-$r1=mysqli_fetch_array($ab);
-$slot=[];
-$VNo=[];
-$stat=[];
-    while ($row = mysqli_fetch_array($ab)) {
-        $slot[]=$row['slot'];
-        $VNo[]=$row['V_No'];
-        $stat[]=$row['booked'];
+if(isset($_GET['Sub2'])){
+    $pl=$_GET['place'];
+    $rese="SELECT `p_id`,`c_name`,`Email` FROM `clients` WHERE c_place = '$pl' And Temp=0;";
+    $rese1=mysqli_query($conn,$rese);
+    $res=mysqli_fetch_assoc($rese1);
+    $ve_no=$res['p_id'];
+    $stats=$res['Email'];
+    // echo $ve_no;
+    // echo $stats;
+
+    $check1="SELECT `$stats` as stats FROM `reserve` WHERE `$ve_no`='$vno';";
+    $ch2=mysqli_query($conn,$check1);
+    $ch3=mysqli_fetch_assoc($ch2);
+    // echo $ch3['stats'];
+    $a=mysqli_num_rows($ch2);
+    // echo $a;
+    if(mysqli_num_rows($ch2)==1){
+    $ch4=$ch3['stats'];}
+
+    $aa="SELECT `slot`,`$ve_no` as 'vn',`$stats` as st FROM `reserve` WHERE `$stats` !='Unavailable';";
+    $ab=mysqli_query($conn,$aa);
+    $r12=mysqli_num_rows($ab);
+    // echo $r12;
+    $r1=mysqli_fetch_array($ab);
+    $slot=[];
+    $VNo=[];
+    $stat=[];
+    $j=1;
+        while ($row = mysqli_fetch_array($ab)) {
+            $slot[$j]=$row['slot'];
+            $VNo[$j]=$row['vn'];
+            $stat[$j]=$row['st'];
+            $j++;
+        }
+        // echo $VNo[1];
+        // echo $stat[1];
+        
     }
-    // echo $stat[0];
-
-
 if(isset($_POST['Sub1'])){
     $slots=$_POST['slot'];
     $v_no=$_POST['vno'];
     $mail=$_POST['email'];
-    $r1="UPDATE `reserve` SET `V_No`='$v_no',`booked`='Reserved' WHERE `slot`=$slots;";
+    $r1="UPDATE `reserve` SET `$ve_no`='$v_no',`$stats`='Reserved' WHERE `slot`=$slots;";
     $r2=mysqli_query($conn,$r1);
     // echo $slots."-". $v_no. "-". $mail;
     header('Location:Reservation.php');
@@ -65,6 +94,13 @@ body {
     /* margin: 0; */
 }
 
+.sel{
+    text-align:center;
+    width:300px;
+    margin-top: 0px;
+    margin-left: 600px;
+}
+
 .parking-lot1 {
     margin-top: 0px;
     display: grid;
@@ -74,6 +110,18 @@ body {
     /* padding: 20px; */
     border-radius: 10px;
 }
+
+.s1 {
+            width: calc(100% - 12px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            
+        }
+
+        .s1 {
+            width: 100%;
+        }
 
 .parking-space {
     margin-left:5px;
@@ -114,14 +162,14 @@ body {
         <!-- <div class="heddiv"> -->
             <!-- <img src="/bag.jpg" alt="sry" class="img1"> -->
         <!-- </div> -->
-        <h1>VEHICLE PARKING</h1>
+        <h1>VEHICLE PARKING RESERVATION</h1>
         
     </header>
 
     <nav>
         <a href="/project2024-main/Dash.php">Dashboard</a>
         <?php if($person==3){?>
-            <a href="/project2024-main/Reservation.php">Reservation</a>
+            <!-- <a href="/project2024-main/Reservation.php">Reservation</a> -->
             <?php }?>
         <a href="/project2024-main/History.php" >History</a>
         <a href="/project2024-main/About.php">About</a>
@@ -129,20 +177,31 @@ body {
         <a href="/project2024-main/Logout.php">Logout</a>
     </nav>
 
+    
+    <div class="sel">
     <h2>Reservation</h2>
-<!-- <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parking Slots</title>
-  
-</head>
-<body> -->
+    <form action="Reservation.php" method="get">
+    <select name="place" id="" placeholder="Parking lot place" class="s1" autofocus>
+        <?php
+            foreach($array as $arr){?>
+                <option value="<?php print($arr) ?>">
+                    <?php 
+                    print($arr);?>
+                </option><?php
+            }?>
+        
+    </select><br><br>
+    <input type="submit" class="s1" value="Submit" name="Sub2"><br><br>
+    </form>
+    </div>
+<?php
+if(isset($_GET['Sub2'])){
+?>
   <div class="parking">
     <h1>Parking Slots</h1>
-    <div class="slots" id="slots">
+    <!-- <div class="slots" id="slots"> -->
       <!-- Parking slots will be added here dynamically -->
-    </div>
+    <!-- </div> -->
   </div>
  
 
@@ -150,16 +209,20 @@ body {
     
 
 <div class="parking-lot1">
-
+<?php
+// echo $slot[1];
+// echo $slot[2];
+?>
     <?php 
-    $i=0;
-    while($i<$r12-1){?>
+    $i=1;
+    while($i<$r12){?>
+    
         <div class="parking-space" id="<?php print($slot[$i]);?>">
         <form action="Reservation.php" method="post">
         <br>    
         <p>
             
-            <input type="text" name="slot" id="box" value="<?php print($i+1);?>" hidden></p>
+            <input type="text" name="slot" id="box" value="<?php print($i);?>" hidden></p>
             <p><input type="text" name="email" id="box" value="<?php print($email);?>" hidden></p>
             <p><input type="text" name="vno" id="box" value="<?php print($vno);?>" hidden></p>
             
@@ -179,7 +242,7 @@ body {
     </div>
     <?php
     $i++;
-    }?>
+    }}?>
 
     </div>
     </div>
@@ -189,7 +252,7 @@ body {
 
 
 
-
+<p style="color:transparent">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto sapiente placeat veniam. At incidunt dolores adipisci in, nesciunt distinctio culpa cupiditate debitis impedit iusto? Velit eligendi ex culpa error dolorem dolores dolore, maiores voluptate, sed voluptatibus fugiat quo ea perspiciatis commodi tenetur, dicta recusandae facere assumenda nihil veniam porro itaque totam. Consequuntur dicta nobis quibusdam id laborum eos facere dolore accusamus, ad quod impedit officiis, iure voluptates rem nesciunt officia consectetur quas quidem minima aperiam cupiditate animi aut recusandae? Culpa iste quae, veniam dolore distinctio obcaecati? Quisquam laborum modi, rem corporis nihil officiis quo dolores architecto iste tenetur, repellat consequatur fuga possimus eum, pariatur eaque ducimus modi perspiciatis ratione quasi autem praesentium nostrum quidem similique dolor quaerat. Illum, aperiam? Ab unde accusamus consectetur cumque. Corrupti, quia? Alias, maxime nulla soluta voluptatem itaque consequatur repellat nesciunt, laborum magni sit quis sapiente enim voluptates perferendis!</p>
 
 
     <!-- <link rel="stylesheet" href="reservation.css"> -->           

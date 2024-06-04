@@ -44,10 +44,10 @@ if(isset($_POST['otp_val'])){
         $ve_no="SELECT 'VType' FROM `details` WHERE `VNo`='$v_no';";
         $v_no1 = mysqli_query($conn, $ve_no);
         $ow = mysqli_fetch_assoc($v_no1);
-        // if($ow=="Car"){
+        if($ow=="Car"){
             $add2="UPDATE `reserve` SET `V_No`=NULL,`$email`='Available' WHERE`$p_id`='$v_no';";
             $r1=mysqli_query($conn,$add2);
-        
+        }
         header("Location:Exit.php?vno=$v_no");
     }
     else{
