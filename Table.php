@@ -19,7 +19,7 @@ if(isset($_POST['sub2'])){
     // echo $try;
 }
 
-$sql = "SELECT * FROM `details` ORDER BY `InTime` ASC;";
+$sql = "SELECT * FROM `details` ORDER BY `OutTime` ASC;";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -60,6 +60,7 @@ $result = mysqli_query($conn, $sql);
         <a href="/project2024-main/Table.php">History</a>
         
         <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
+        <a href="/project2024-main/Recharge.php">Recharge</a>
         <a href="/project2024-main/User.php">Users</a>
         <a href="/project2024-main/c_data.php">Clients</a>
         <a href="/project2024-main/c_reg.php">Client Register</a>
@@ -120,28 +121,28 @@ elseif($try==4){?>
             <th class="hd">Place</th>
         <?php
             if($try==5){
-            $sql = "SELECT * FROM `details` WHERE Payment=0 ORDER BY `InTime` ASC;";
+            $sql = "SELECT * FROM `details` WHERE Payment=0 ORDER BY `OutTime` ASC;";
             $result = mysqli_query($conn, $sql);
             // $try="default";
             // echo $try;
         }
             
             if($try==0){
-                $sql = "SELECT * FROM `details` ORDER BY `InTime` ASC;";
+                $sql = "SELECT * FROM `details` ORDER BY `OutTime` ASC;";
                 $result = mysqli_query($conn, $sql);
             }
             elseif($try==2){
-                $sql = "SELECT * FROM `details` WHERE Payment=0 ORDER BY `InTime` ASC;";
+                $sql = "SELECT * FROM `details` WHERE Payment=0 ORDER BY `OutTime` ASC;";
                 $result = mysqli_query($conn, $sql);
             }
             elseif($try==3){
                 // echo 'efs';
-                $sql = "SELECT * FROM `details` WHERE v_no='$tr' ORDER BY `InTime` ASC;";
+                $sql = "SELECT * FROM `details` WHERE v_no='$tr' ORDER BY `OutTime` ASC;";
                 $result = mysqli_query($conn, $sql);
             }
             elseif($try==6){
                 // echo 'efs';
-                $sql = "SELECT * FROM `details` WHERE p_id='$cid' ORDER BY `InTime` ASC;";
+                $sql = "SELECT * FROM `details` WHERE p_id='$cid' ORDER BY `OutTime` ASC;";
                 $result = mysqli_query($conn, $sql);
             }
             //     $sql = "SELECT `VNo` FROM `basic` order by 'VNo';";
@@ -200,8 +201,11 @@ elseif($try==4){?>
                 if($row['Payment']==0||$row['Payment']==NULL){
                     $status='Vehicle Parked';
                 }
-                else{
+                elseif($row['Payment']==1){
                     $status='Payment Successful';
+                }
+                elseif($row['Payment']==2){
+                    $status='Reserved';
                 }
                 $pid=$row['p_id'];
                 $cli="SELECT `c_name`,`c_city`,`c_place` FROM `clients` WHERE `p_id`=$pid;";
@@ -216,7 +220,7 @@ elseif($try==4){?>
                 <td class="td">' . $row['InTime'] . '</td>
                 <td class="td">' . $row['OutTime'] . '</td>
                 <td class="td">' .$diff->d." Days " .$diff->h." Hours " . $diff->i." Min" . '</td>
-                <td class="td" center>' . $price . '</td>
+                <td class="td" center>' . $row['Price'] . '</td>
                 <td class="td">' . $status . '</td>
                 <td class="td">' . $pid . '</td>
                 <td class="td">' . $cli2['c_city'] . '</td>

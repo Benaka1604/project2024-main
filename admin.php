@@ -84,6 +84,7 @@ $sum3=$row2['income'];
 <?php
 if($p_id==0){?>
     <a href="/project2024-main/Table.php">History</a>
+    <a href="/project2024-main/Recharge.php">Recharge</a>
     <a href="/project2024-main/User.php">Users</a>
     <a href="/project2024-main/c_data.php">Clients</a>
     <a href="/project2024-main/c_reg.php">Client Register</a>
@@ -91,15 +92,11 @@ if($p_id==0){?>
 }
 else{?>
     <a href="/project2024-main/Table1.php">History</a>
+    <a href="/project2024-main/Recharge.php">Recharge</a>
     <a href="/project2024-main/Entry-c.php" target="_blank">Vehicle Entry</a>
         <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a>
 <?php
 }?>
-
-        
-        <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
-        
-
         <a href="/project2024-main/Logout.php">Logout</a>
     </nav>
 

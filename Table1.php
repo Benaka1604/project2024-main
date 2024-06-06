@@ -15,7 +15,7 @@ if(isset($_POST['sub1'])){
 }
 
 
-$sql = "SELECT * FROM `details` WHERE p_id='$p_id' ORDER BY `InTime` ASC;";
+$sql = "SELECT * FROM `details` WHERE p_id='$p_id' ORDER BY `OutTime` ASC;";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -56,6 +56,7 @@ $result = mysqli_query($conn, $sql);
         <a href="/project2024-main/Table1.php">History</a>
         <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
         <!-- <a href="/project2024-main/User.php">Users</a> -->
+        <a href="/project2024-main/Recharge.php">Recharge</a>
         <a href="/project2024-main/Entry-c.php" target="_blank">Vehicle Entry</a>
         <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a>
         <a href="/project2024-main/Logout.php">Logout</a>
@@ -106,23 +107,23 @@ $result = mysqli_query($conn, $sql);
 
         <?php
             if($try==5){
-            $sql = "SELECT * FROM `details` WHERE Payment=0 and p_id='$p_id' ORDER BY `InTime` ASC;";
+            $sql = "SELECT * FROM `details` WHERE Payment=0 and p_id='$p_id' ORDER BY `OutTime` ASC;";
             $result = mysqli_query($conn, $sql);
             // $try="default";
             // echo $try;
         }
             
             if($try==0){
-                $sql = "SELECT * FROM `details` WHERE p_id='$p_id' ORDER BY `InTime` ASC;";
+                $sql = "SELECT * FROM `details` WHERE p_id='$p_id' ORDER BY `OutTime` ASC;";
                 $result = mysqli_query($conn, $sql);
             }
             elseif($try==2){
-                $sql = "SELECT * FROM `details` WHERE Payment=0 and p_id='$p_id' ORDER BY `InTime` ASC;";
+                $sql = "SELECT * FROM `details` WHERE Payment=0 and p_id='$p_id' ORDER BY `OutTime` ASC;";
                 $result = mysqli_query($conn, $sql);
             }
             elseif($try==3){
                 // echo 'efs';
-                $sql = "SELECT * FROM `details` WHERE v_no='$tr' and p_id='$p_id' ORDER BY `InTime` ASC;";
+                $sql = "SELECT * FROM `details` WHERE v_no='$tr' and p_id='$p_id' ORDER BY `OutTime` ASC;";
                 $result = mysqli_query($conn, $sql);
             }
             //     $sql = "SELECT `VNo` FROM `basic` order by 'VNo';";
@@ -179,9 +180,14 @@ $result = mysqli_query($conn, $sql);
 
                 if($row['Payment']==0||$row['Payment']==NULL){
                     $status='Vehicle Parked';
+                    $outti='Till Now';
                 }
-                else{
+                elseif($row['Payment']==1){
                     $status='Payment Successful';
+                    $outti=$row['OutTime'];
+                }
+                elseif($row['Payment']==2){
+                    $status='Reserved';
                 }
                 $Vn=strtoupper($row['v_no']);
                 echo ' <tr> 
@@ -190,9 +196,9 @@ $result = mysqli_query($conn, $sql);
                 <td class="td">' . $Vn . '</td>
                 <td class="td">' . $row['VType'] . '</td>
                 <td class="td">' . $row['InTime'] . '</td>
-                <td class="td">' . $row['OutTime'] . '</td>
+                <td class="td">' . $outti . '</td>
                 <td class="td">' .$diff->d." Days " .$diff->h." Hours " . $diff->i." Min" . '</td>
-                <td class="td" center>' . $price . '</td>
+                <td class="td" center>' . $row['Price'] . '</td>
                 <td class="td">' . $status . '</td>
                 <td class="td">
                 

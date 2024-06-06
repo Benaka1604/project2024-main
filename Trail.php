@@ -1,3 +1,5 @@
+<!-- Old Reservation table code -->
+
 <?php 
 include('DataBase.php');
 include('Common.php');

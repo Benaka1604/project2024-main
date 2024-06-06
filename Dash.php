@@ -20,16 +20,34 @@ $row = mysqli_fetch_assoc($result);
     <link rel="stylesheet" href="home.css">
     <link rel="icon" href="prjlogo.jpeg">
     <style>
-        .widget2{
-    width: 300px;
-    height: 180px;   
-    padding: 20px;
-    border-radius: 5%;
-    padding-left: 12px;
-    overflow: hidden;
-    /* text-align: center; */
-    
-}
+    .widget2{
+        width: 300px;
+        height: 180px;   
+        padding: 20px;
+        border-radius: 5%;
+        padding-left: 12px;
+        overflow: hidden;
+        /* text-align: center; */
+    }
+
+    .data{
+        color:brown;
+        width:100%-80px;
+        margin-top:20px;
+        margin-left:40px;
+        height: 80px;
+        display: flex;
+    }
+    .data1{
+        width:400px;
+        height: 80px;
+    }
+    .data2{
+        margin-left:900px;
+        width:400px;
+        height: 80px;
+        
+    }
     </style>
 </head>
 <body>
@@ -42,8 +60,8 @@ $row = mysqli_fetch_assoc($result);
     <nav>
         <a href="/project2024-main/Dash.php">Dashboard</a>
         <?php if($person==3){?>
-            <!-- <a href="/project2024-main/Reservation.php">Reservation</a> -->
-            <?php }?>
+            <a href="/project2024-main/Reservation.php">Reservation</a>
+        <?php }?>   
         <a href="/project2024-main/History.php" >History</a>
         <a href="/project2024-main/About.php">About</a>
         <a href="/project2024-main/contact.php" >Contact</a>
@@ -54,11 +72,16 @@ $row = mysqli_fetch_assoc($result);
         ?>
 
     <!-- Displaying details of the user -->
-    <Label>User Name              : </Label><?php echo "\t".$row['Name']; ?><br>
-    <Label>Vehicle Number    : </Label><?php echo $row['VNo']; ?><br>
-    
-    <Label>Vehicle Type      : </Label><?php echo $row['VType']; ?>
-
+    <div class="data">
+        <div class="data1">
+            <Label>User name      &nbsp    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    : </Label><?php echo "\t".$row['Name']; ?><br>
+            <Label>Points Available  &nbsp    : </Label><?php echo $row['points']; ?>
+        </div>
+        <div class="data2">
+            <Label>Vehicle Number    : </Label><?php echo $row['VNo']; ?><br>
+            <Label>Vehicle Type   &nbsp&nbsp&nbsp   : </Label><?php echo $row['VType']; ?>
+        </div>
+    </div>
     <!-- <input type="text" name="" id="" placeholder=""> -->
     <div class="widgbag">
     <div class="dashboard">

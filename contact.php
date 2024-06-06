@@ -60,7 +60,7 @@
     <nav>
         <a href="/project2024-main/Dash.php">Dashboard</a>
         <?php if($person==3){?>
-            <!-- <a href="/project2024-main/Reservation.php">Reservation</a> -->
+            <a href="/project2024-main/Reservation.php">Reservation</a>
             <?php }?>
         <a href="/project2024-main/History.php" >History</a>
         <a href="/project2024-main/About.php">About</a>

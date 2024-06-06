@@ -69,19 +69,11 @@ $V_No=mysqli_fetch_assoc($result);
         
     </header>
     <nav>
-    <a href="/project2024-main/Admin.php">Home</a>
-    <?php
-    if($p_id==0){?>
-    <a href="/project2024-main/Table.php">History</a>
-    <a href="/project2024-main/User.php">Users</a>
-    <?php
-}
-else{?>
-    <a href="/project2024-main/Table1.php">History</a>
-<?php
-}?>
+        <a href="/project2024-main/Admin.php">Home</a>
+        <a href="/project2024-main/Table1.php">History</a>
         <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
         <!-- <a href="/project2024-main/User.php">Users</a> -->
+        <a href="/project2024-main/Recharge.php">Recharge</a>
         <a href="/project2024-main/Entry-c.php" target="_blank">Vehicle Entry</a>
         <a href="/project2024-main/Exit.php" target="_blank">Vehice Exit</a>
         <a href="/project2024-main/Logout.php">Logout</a>
@@ -113,11 +105,15 @@ else{?>
     <form action="Entry1.php" method="post">
         <label for=""><h3>Select Vehicle Number to enter</h3></label><br>
     <input type="text" name="v_no" id="select" autofocus><br><br>
+    <?php
+        if(isset($_POST['Submit'])){
+            $vres=$_POST['v_no'];
+            
+        }
+    ?>
     <input type="submit" name="Submit">
     </form>
     
-
-
 
 <!--     
        <h1>Admin Page</h1>

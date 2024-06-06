@@ -241,7 +241,7 @@ if (isset($_POST['login'])) {
 
             <form method="post" autocomplete="off" id="login" class="input-group" action="home.php">
 
-                <input class="input-field" type="text" name="userid" placeholder="Enter your Email-Id" ><br><br>
+                <input class="input-field" type="text" name="userid" placeholder="Enter your Email-Id" autofocus><br><br>
 
                 <input class="input-field" type="password" name="password"
                     placeholder="Enter your password"><br>

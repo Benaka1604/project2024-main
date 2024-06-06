@@ -24,6 +24,9 @@ $vno=$vn['VNo'];
 
 if(isset($_GET['Sub2'])){
     $pl=$_GET['place'];
+    $re=$pl;
+}
+    $pl=$re;
     $rese="SELECT `p_id`,`c_name`,`Email` FROM `clients` WHERE c_place = '$pl' And Temp=0;";
     $rese1=mysqli_query($conn,$rese);
     $res=mysqli_fetch_assoc($rese1);
@@ -59,14 +62,31 @@ if(isset($_GET['Sub2'])){
         // echo $VNo[1];
         // echo $stat[1];
         
-    }
+    // } This is for Sub2 if condition.
 if(isset($_POST['Sub1'])){
     $slots=$_POST['slot'];
+    $pln=$_POST['rev'];
+    $reser="SELECT `p_id`,`c_name`,`Email` FROM `clients` WHERE c_place = '$pln' And Temp=0;";
+    $reser1=mysqli_query($conn,$reser);
+    $resr=mysqli_fetch_assoc($reser1);
+    
     $v_no=$_POST['vno'];
-    $mail=$_POST['email'];
-    $r1="UPDATE `reserve` SET `$ve_no`='$v_no',`$stats`='Reserved' WHERE `slot`=$slots;";
+    $ve_no=$_POST['p_id'];
+    $mai=$resr['Email'];
+    $mail=$resr['email1'];
+    
+    $r1="UPDATE `reserve` SET `$ve_no`='$v_no',`$mai`='Reserved' WHERE `slot`=$slots;";
     $r2=mysqli_query($conn,$r1);
-    // echo $slots."-". $v_no. "-". $mail;
+    $dt=date('Y-m-d H:i:s');
+    $d1=date('H');
+    $d2=$d1+4;
+    $dt1=date('Y-m-d '.$d2.':i:s');
+    $add="INSERT INTO `details` (`sl`, `Email`,`v_no`, `VNo`,`VType`, `InTime`, `OutTime`, `Totalhrs`, `Price`, `Payment`,`p_id`) VALUES  (NULL, '$mail', '$v_no','$v_no','Car', current_timestamp(),'$dt1', 4, 20, 2,'$ve_no');";
+    $add1=mysqli_query($conn,$add);
+    $cha="UPDATE `basic` SET `Payment`=2,`points`=`points`-20 WHERE `VNo`='$v_no';";
+    $cha1=mysqli_query($conn,$cha);
+    
+    
     header('Location:Reservation.php');
 }
 ?>
@@ -169,19 +189,29 @@ body {
     <nav>
         <a href="/project2024-main/Dash.php">Dashboard</a>
         <?php if($person==3){?>
-            <!-- <a href="/project2024-main/Reservation.php">Reservation</a> -->
+            <a href="/project2024-main/Reservation.php">Reservation</a>
             <?php }?>
         <a href="/project2024-main/History.php" >History</a>
         <a href="/project2024-main/About.php">About</a>
         <a href="/project2024-main/contact.php" >Contact</a>
         <a href="/project2024-main/Logout.php">Logout</a>
     </nav>
+<?php 
 
+    // echo $dt.'<br>';
+    // echo $dt1;
+    // echo $email;
+    // echo $re;
+?>
     
     <div class="sel">
     <h2>Reservation</h2>
     <form action="Reservation.php" method="get">
     <select name="place" id="" placeholder="Parking lot place" class="s1" autofocus>
+                <option value="<?php print($re) ?>">
+                <?php 
+                    print($re);?>
+                </option>
         <?php
             foreach($array as $arr){?>
                 <option value="<?php print($arr) ?>">
@@ -194,11 +224,14 @@ body {
     <input type="submit" class="s1" value="Submit" name="Sub2"><br><br>
     </form>
     </div>
+    
 <?php
-if(isset($_GET['Sub2'])){
-?>
+// echo $slots."-". $v_no. "-". $mail;
+// if(isset($_GET['Sub2'])){
+// ?>
   <div class="parking">
     <h1>Parking Slots</h1>
+    
     <!-- <div class="slots" id="slots"> -->
       <!-- Parking slots will be added here dynamically -->
     <!-- </div> -->
@@ -215,6 +248,7 @@ if(isset($_GET['Sub2'])){
 ?>
     <?php 
     $i=1;
+    // echo $email;
     while($i<$r12){?>
     
         <div class="parking-space" id="<?php print($slot[$i]);?>">
@@ -223,7 +257,9 @@ if(isset($_GET['Sub2'])){
         <p>
             
             <input type="text" name="slot" id="box" value="<?php print($i);?>" hidden></p>
-            <p><input type="text" name="email" id="box" value="<?php print($email);?>" hidden></p>
+            <input type="text" name="rev" id="box" value="<?php print($re);?>" hidden></p>
+            <p><input type="text" name="p_id" id="box" value="<?php print($ve_no);?>" hidden></p>
+            <p><input type="text" name="email1" id="box" value="<?php print($email);?>" hidden></p>
             <p><input type="text" name="vno" id="box" value="<?php print($vno);?>" hidden></p>
             
             <p>
@@ -242,7 +278,9 @@ if(isset($_GET['Sub2'])){
     </div>
     <?php
     $i++;
-    }}?>
+    }
+    // }
+    ?>
 
     </div>
     </div>

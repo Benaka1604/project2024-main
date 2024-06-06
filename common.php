@@ -23,4 +23,10 @@
         $p_k=$pid2['p_id'];
         $_SESSION['p']=$p_k;
     }
+
+    $re='UDAYAGIRI';
+    if(array_key_exists("re",$_SESSION)){
+        $re=$_SESSION['re'];
+    }
+
 ?>

@@ -26,7 +26,7 @@ include 'Common.php';
     <nav>
         <a href="/project2024-main/Dash.php">Dashboard</a>
         <?php if($person==3){?>
-            <!-- <a href="/project2024-main/Reservation.php">Reservation</a> -->
+            <a href="/project2024-main/Reservation.php">Reservation</a>
             <?php }?>
         <a href="/project2024-main/History.php" >History</a>
         <a href="/project2024-main/About.php">About</a>
@@ -57,6 +57,8 @@ include 'Common.php';
             <th class="hd">Total Parking Time</th>
             <th class="hd">Total Price</th>
             <th class="hd">Payment Status</th>
+            <th class="hd">City</th>
+            <th class="hd">Place</th>
 
             <?php
             $i=1;
@@ -67,9 +69,16 @@ include 'Common.php';
                 if($row['Payment']==0||$row['Payment']==NULL){
                     $status='Vehicle Parked';
                 }
-                else{
+                elseif($row['Payment']==1){
                     $status='Payment Successful';
                 }
+                elseif($row['Payment']==2){
+                    $status='Reserved';
+                }
+                $pid=$row['p_id'];
+                $cli="SELECT `c_name`,`c_city`,`c_place` FROM `clients` WHERE `p_id`=$pid;";
+                $cli1=mysqli_query($conn,$cli);
+                $cli2=mysqli_fetch_assoc($cli1);
 
                 echo ' <tr> 
 
@@ -79,6 +88,8 @@ include 'Common.php';
                 <td class="td">' . $row['Totalhrs'].' Hours'. '</td>
                 <td class="td" center>' . $row['Price'] . '</td>
                 <td class="td">' . $status . '</td>
+                <td class="td">' . $cli2['c_city'] . '</td>
+                <td class="td">' . $cli2['c_place'] . '</td>
                 <td class="td">
                 
                 

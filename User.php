@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "DataBase.php";
-$sql = "SELECT * FROM `basic` WHERE T_hrs=0;";
+$sql = "SELECT * FROM `basic` WHERE points is not null;";
 $result = mysqli_query($conn, $sql);
 
 if ($_SESSION['admin_id'] != 1) {
@@ -18,8 +18,11 @@ if ($_SESSION['admin_id'] != 1) {
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="User.css">
     <link rel="icon" href="prjlogo.jpeg">
-
-
+    <style>
+        .u-table{
+            margin-left: 24%;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -32,7 +35,7 @@ if ($_SESSION['admin_id'] != 1) {
     <nav>
     <a href="/project2024-main/Admin.php">Home</a>
     <a href="/project2024-main/Table.php">History</a>
-        <!-- <a href="/project2024-main/Reserve.php">Reservation</a> -->
+        <a href="/project2024-main/Recharge.php">Recharge</a>
         <a href="/project2024-main/User.php">Users</a>
         <a href="/project2024-main/c_data.php">Clients</a>
         <a href="/project2024-main/c_reg.php">Client Register</a>
@@ -52,6 +55,7 @@ if ($_SESSION['admin_id'] != 1) {
             <th class="hd">Name</th>
             <th class="hd">Vehicle Number</th>
             <th class="hd">Vehicle Type</th>
+            <th class="hd">Balance points</th>
             <!-- <th class="hd">Phone Number</th> -->
             <th class="hd">E-mail</th>
             <!-- <th class="hd">User-Id</th> -->
@@ -66,10 +70,9 @@ if ($_SESSION['admin_id'] != 1) {
                 <td class="td">' . $row['Name'] . '</td>
                 <td class="td">' . $row['VNo'] . '</td>
                 <td class="td">' . $row['VType'] . '</td>
-                
+                <td class="td">' . $row['points'] . '</td>
                 <td class="td">' . $row['Email'] . '</td>
                 <td class="td">
-                
                 <button class="btn-delete"><a href="delete.php?deleteVNo=' . $row['Email'] . '">Delete</a></button> 
                 </td>
                 </tr>
